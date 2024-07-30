@@ -1,0 +1,61 @@
+---
+import BackToPrev from "@/components/BackToPrev.astro";
+import Container from "@/components/Container.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { HOME } from "@/consts";
+import PageLayout from "@/layouts/PageLayout.astro";
+import { readingTime } from "@/lib/utils";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  if (import.meta.env.DEV) {
+    return posts.map((post) => ({
+      params: { slug: post.slug },
+      props: post,
+    }));
+  }
+
+  return posts
+    .filter((x) => !x.data.draft)
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: post,
+    }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<PageLayout
+  title={HOME.TITLE}
+  description={HOME.DESCRIPTION}
+  ogImage={post.data.heroImage}
+>
+  <Container>
+    <div class="animate">
+      <BackToPrev href="/blog"> Back to blog </BackToPrev>
+    </div>
+
+    <div class="space-y-1 my-10">
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={post.data.pubDate} />
+        </div>
+        &bull;
+        <div class="font-base text-sm">
+          {readingTime(post.body)}
+        </div>
+      </div>
+      <div class="animate text-2xl font-semibold text-black dark:text-white">
+        {post.data.title}
+      </div>
+    </div>
+    <BlogPost {...post.data}>
+      <Content />
+    </BlogPost>
+  </Container>
+</PageLayout>
