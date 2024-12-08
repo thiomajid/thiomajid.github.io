@@ -16,8 +16,8 @@ import { SITE } from "@/consts";
       <button id="mobile-menu-button" class="md:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="48"
-          height="48"
+          width="40"
+          height="40"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -43,13 +43,32 @@ import { SITE } from "@/consts";
 </header>
 
 <script>
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const navMenu = document.getElementById("nav-menu");
+  function setupMobileMenu() {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const navMenu = document.getElementById("nav-menu");
 
-  mobileMenuButton?.addEventListener("click", () => {
-    navMenu?.classList.toggle("hidden");
-    navMenu?.classList.toggle("slide-in");
+    function toggleMobileMenu() {
+      navMenu?.classList.toggle("hidden");
+      navMenu?.classList.toggle("slide-in");
+    }
+
+    mobileMenuButton?.addEventListener("click", toggleMobileMenu);
+  }
+
+  // Setup on initial load
+  setupMobileMenu();
+
+  // Reattach listeners on view transition navigation
+  document.addEventListener("astro:before-preparation", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const navMenu = document.getElementById("nav-menu");
+
+    // Reset to initial state before navigation
+    navMenu?.classList.add("hidden");
+    navMenu?.classList.remove("slide-in");
   });
+
+  document.addEventListener("astro:after-swap", setupMobileMenu);
 </script>
 
 <style>
