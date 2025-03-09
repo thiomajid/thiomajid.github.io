@@ -19,7 +19,7 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    heroImage: z.string(),
+    heroImage: z.string().optional(),
     draft: z.boolean().default(true),
     state: z.enum(["Complete", "Paused", "In Progress"]).default("Paused"),
     repository: z.string().optional(),

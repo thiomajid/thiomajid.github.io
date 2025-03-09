@@ -6,7 +6,7 @@ repository: "https://github.com/thiomajid/SJobs"
 heroImage: "https://www.notion.so/images/page-cover/rijksmuseum_avercamp_1620.jpg"
 tags: ["Flutter"]
 state: "Paused"
-draft: false
+draft: true
 ---
 
 ![SJobs](https://www.notion.so/images/page-cover/rijksmuseum_avercamp_1620.jpg)
