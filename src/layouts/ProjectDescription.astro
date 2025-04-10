@@ -6,8 +6,6 @@ import { getProjectBadgeStyle } from "@/utils/content";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 
 type Props = CollectionEntry<"projects">["data"];
 
@@ -70,7 +68,6 @@ const badgeStyle = getProjectBadgeStyle(state);
   </head>
 
   <body>
-    <Header />
     <main>
       <article>
         <div class="hero-image">
@@ -131,6 +128,5 @@ const badgeStyle = getProjectBadgeStyle(state);
         </div>
       </article>
     </main>
-    <Footer />
   </body>
 </html>
