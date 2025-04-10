@@ -180,8 +180,11 @@ const { title, description, image = "/logo.jpg" } = Astro.props;
 
     if (userTheme === "light" || userTheme === "dark") {
       toggleTheme(userTheme === "dark");
-    } else {
+    } else if (userTheme === "system") {
       toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } else {
+      // Default to light theme when no preference is set
+      toggleTheme(false);
     }
   }
 
