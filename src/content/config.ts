@@ -41,6 +41,7 @@ const publications = defineCollection({
       .enum(["Journal", "Conference", "arXiv", "Workshop"])
       .default("Journal"),
     link: z.string().optional(),
+    pubDate: z.coerce.date(),
   }),
 });
 

@@ -12,6 +12,7 @@
 
 * {
   font-family: "JetBrains";
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -35,15 +36,15 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply bg-neo-bglight dark:bg-neo-bgdark;
+  @apply text-black dark:text-white/85; /* Reduced opacity for dark mode text */
   font-family: "JetBrains";
 }
 
 header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/50;
-  @apply backdrop-blur-sm saturate-200;
+  @apply fixed top-0 left-0 right-0 z-50 py-4;
+  @apply bg-neo-bglight dark:bg-neo-bgdark;
+  @apply border-b-2 border-black dark:border-white/60; /* Reduced border opacity */
 }
 
 main {
@@ -51,25 +52,47 @@ main {
 }
 
 footer {
-  @apply py-5 text-sm;
+  @apply py-5 text-sm border-t-2 border-black dark:border-white/60; /* Reduced border opacity */
 }
 
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-headings:font-bold;
+  @apply prose-headings:text-black prose-headings:dark:text-white/90; /* Reduced opacity */
   font-family: "JetBrains" !important;
 }
 
+/* Improve icon visibility in dark mode */
+svg {
+  @apply stroke-current fill-current dark:stroke-white/90 dark:fill-none;
+}
+
 @layer utilities {
+  .neo-card {
+    @apply bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light p-5 transition-all duration-200;
+  }
+
+  .neo-card:hover {
+    @apply shadow-neo-hover transform -translate-y-1;
+  }
+
+  .neo-button {
+    @apply bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200;
+  }
+
+  .neo-button:hover {
+    @apply shadow-neo-hover transform -translate-y-1;
+  }
+
   article a {
-    @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
+    @apply font-sans text-current underline underline-offset-4;
+    @apply decoration-black dark:decoration-white/70 decoration-2;
     @apply transition-colors duration-300 ease-in-out;
   }
+
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
+    @apply text-black dark:text-white bg-neo-yellow dark:bg-neo-blue;
+    @apply decoration-transparent;
   }
 }
 

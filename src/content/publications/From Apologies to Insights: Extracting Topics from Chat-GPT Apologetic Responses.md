@@ -5,6 +5,7 @@ where: "Journal of Decision Systems"
 state: "Published"
 pubType: "Journal"
 link: "https://www.tandfonline.com/doi/full/10.1080/12460125.2024.2438610"
+pubDate: "Mar 04 2025"
 ---
 
 ## Abstract

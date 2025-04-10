@@ -18,18 +18,20 @@ const projects = (await getCollection("projects"))
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const publications = (await getCollection("publications"))
-  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
+    <h4
+      class="animate font-bold text-black dark:text-white text-2xl border-b-2 border-black dark:border-white pb-2 inline-block rotate-[-0.5deg]"
+    >
       Hi There <span class="text-xl">👋</span>
     </h4>
     <div class="space-y-16">
       <section>
-        <article class="space-y-4">
+        <article class="space-y-4 neo-card mt-6">
           <p class="animate">
             Welcome to {SITE_TITLE}. I'm Abdoul Majid, currently pursuing a
             research Master's degree in Artificial Intelligence.
@@ -48,9 +50,10 @@ const publications = (await getCollection("publications"))
             >
             to ensure better decision making using AI systems. In my spare time,
             I also work on
-            <span class="font-bold">OSS</span> projects like <Link
-              href="/projects/hausalm">HausaLM</Link
-            > or <Link href="/projects/eflight">EfLight</Link>.
+            <span class="bg-neo-yellow dark:bg-neo-blue px-1">OSS</span> projects
+            like <Link href="/projects/hausalm">HausaLM</Link> or <Link
+              href="/projects/eflight">EfLight</Link
+            >.
           </p>
 
           <p class="animate">
@@ -62,7 +65,9 @@ const publications = (await getCollection("publications"))
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
+          <h5
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-pink dark:bg-neo-pink border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+          >
             Recent publications
           </h5>
           <Link href="/publications"> See all publications </Link>
@@ -80,7 +85,11 @@ const publications = (await getCollection("publications"))
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+          <h5
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+          >
+            Latest posts
+          </h5>
           <Link href="/blog"> See all posts </Link>
         </div>
         <ul class="flex flex-col gap-4">
@@ -96,7 +105,9 @@ const publications = (await getCollection("publications"))
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
+          <h5
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-green dark:bg-neo-green border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+          >
             Recent projects
           </h5>
           <Link href="/projects"> See all projects </Link>
@@ -113,29 +124,34 @@ const publications = (await getCollection("publications"))
       </section>
 
       <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
-        <article>
+        <h5
+          class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-blue dark:bg-neo-yellow border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+        >
+          Let's Connect
+        </h5>
+        <article class="neo-card mt-4">
           <p>
             If you want to get in touch with me about something or just to say
             hi, reach out on social media or send me an email.
           </p>
+
+          <ul class="flex flex-wrap gap-3 mt-4">
+            {
+              SOCIALS.map((SOCIAL, idx) => (
+                <li class="neo-button py-1 px-3 text-nowrap inline-block">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    underline={false}
+                    aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
         </article>
-        <ul class="flex flex-wrap gap-2">
-          {
-            SOCIALS.map((SOCIAL, idx) => (
-              <li class="flex gap-x-2 text-nowrap">
-                <Link
-                  href={SOCIAL.HREF}
-                  external
-                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
-                >
-                  {SOCIAL.NAME}
-                </Link>
-                {idx + 1 != SOCIALS.length && "/"}
-              </li>
-            ))
-          }
-        </ul>
       </section>
     </div>
   </Container>

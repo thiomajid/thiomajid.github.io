@@ -2,6 +2,8 @@
 import BackToTop from "@/components/BackToTop.astro";
 import Container from "@/components/Container.astro";
 import { SITE } from "@/consts";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="animate">
@@ -12,15 +14,14 @@ import { SITE } from "@/consts";
       </div>
     </div>
     <div class="flex justify-between items-center">
-      <div>
-        &copy; 2024 {`|`}
-        {SITE.NAME}
+      <div class="font-bold">
+        &copy; {currentYear} | {SITE.NAME}
       </div>
-      <div class="flex flex-wrap gap-1 items-center">
+      <div class="flex flex-wrap gap-2 items-center">
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="bg-white border-2 border-black dark:bg-black dark:border-white p-1 shadow-neo hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +33,6 @@ import { SITE } from "@/consts";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
           >
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -48,7 +48,7 @@ import { SITE } from "@/consts";
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="bg-white border-neo-bgdark dark:bg-neo-bgdark dark:border-white border-2 p-1 shadow-neo-light hover:shadow-none hover:-translate-y-1 transition-all duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,11 +56,10 @@ import { SITE } from "@/consts";
             height="18"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="white"
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -68,7 +67,7 @@ import { SITE } from "@/consts";
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white p-1 shadow-neo dark:shadow-neo-light hover:shadow-neo-hover dark:hover:shadow-none hover:-translate-y-1 transition-all duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +79,6 @@ import { SITE } from "@/consts";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
           >
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>

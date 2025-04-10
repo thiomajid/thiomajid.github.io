@@ -4,27 +4,33 @@ import Link from "@/components/Link.astro";
 import { SITE } from "@/consts";
 ---
 
-<header>
+<header class="relative">
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between items-center">
+    <div class="flex flex-wrap gap-y-2 justify-between items-center py-4">
       <Link href="/" underline={false}>
-        <div class="font-semibold">
+        <div
+          class="font-bold text-lg py-1 px-3 bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white rotate-[-1deg] inline-block"
+        >
           {SITE.NAME}
         </div>
       </Link>
 
-      <button id="mobile-menu-button" class="md:hidden">
+      <button
+        id="mobile-menu-button"
+        aria-label="Toggle menu"
+        class="md:hidden flex items-center justify-center bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white p-1.5 rounded shadow-neo dark:shadow-neo-light transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="w-8 h-8"
+          class="w-5 h-5"
         >
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -32,28 +38,87 @@ import { SITE } from "@/consts";
         </svg>
       </button>
 
-      <nav id="nav-menu" class="hidden md:flex md:gap-1 w-full md:w-auto">
-        <Link href="/blog">Blog</Link>
-        <span class="hidden md:inline">/</span>
-        <Link href="/projects">Projects</Link>
-        <span class="hidden md:inline">/</span>
-        <Link href="/publications">Publications</Link>
+      <nav id="nav-menu" class="hidden md:flex md:gap-4 w-full md:w-auto">
+        <Link href="/blog" class_="nav-link">Blog</Link>
+        <span class="hidden md:inline font-bold">/</span>
+        <Link href="/projects" class_="nav-link">Projects</Link>
+        <span class="hidden md:inline font-bold">/</span>
+        <Link href="/publications" class_="nav-link">Publications</Link>
       </nav>
     </div>
   </Container>
+
+  <!-- Mobile menu overlay -->
+  <div
+    id="mobile-nav-overlay"
+    class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div
+    id="mobile-nav-dropdown"
+    class="absolute top-full left-0 right-0 bg-white dark:bg-neo-bgdark border-b-2 border-black dark:border-white shadow-lg z-50 hidden"
+  >
+    <div class="py-4 px-6 flex flex-col space-y-4">
+      <Link href="/blog" class_="mobile-nav-link">Blog</Link>
+      <Link href="/projects" class_="mobile-nav-link">Projects</Link>
+      <Link href="/publications" class_="mobile-nav-link">Publications</Link>
+    </div>
+  </div>
 </header>
 
 <script>
   function setupMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileNavDropdown = document.getElementById("mobile-nav-dropdown");
+    const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
     const navMenu = document.getElementById("nav-menu");
+    let isMenuOpen = false;
 
     function toggleMobileMenu() {
-      navMenu?.classList.toggle("hidden");
-      navMenu?.classList.toggle("slide-in");
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        mobileNavDropdown?.classList.remove("hidden");
+        mobileNavOverlay?.classList.remove("hidden");
+        setTimeout(() => {
+          mobileNavDropdown?.classList.add("mobile-menu-open");
+          mobileNavOverlay?.classList.add("opacity-100");
+        }, 10);
+        document.body.classList.add("overflow-hidden");
+      } else {
+        mobileNavDropdown?.classList.remove("mobile-menu-open");
+        mobileNavOverlay?.classList.remove("opacity-100");
+        setTimeout(() => {
+          mobileNavDropdown?.classList.add("hidden");
+          mobileNavOverlay?.classList.add("hidden");
+        }, 300);
+        document.body.classList.remove("overflow-hidden");
+      }
     }
 
     mobileMenuButton?.addEventListener("click", toggleMobileMenu);
+    mobileNavOverlay?.addEventListener("click", toggleMobileMenu);
+
+    // Close menu when clicking on a mobile nav link
+    document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isMenuOpen) toggleMobileMenu();
+      });
+    });
+
+    // Close menu on window resize if we go above mobile breakpoint
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        isMenuOpen = false;
+        mobileNavDropdown?.classList.add("hidden");
+        mobileNavDropdown?.classList.remove("mobile-menu-open");
+        mobileNavOverlay?.classList.add("hidden");
+        mobileNavOverlay?.classList.remove("opacity-100");
+        document.body.classList.remove("overflow-hidden");
+      }
+    });
   }
 
   // Setup on initial load
@@ -61,12 +126,15 @@ import { SITE } from "@/consts";
 
   // Reattach listeners on view transition navigation
   document.addEventListener("astro:before-preparation", () => {
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const navMenu = document.getElementById("nav-menu");
+    const mobileNavDropdown = document.getElementById("mobile-nav-dropdown");
+    const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
 
     // Reset to initial state before navigation
-    navMenu?.classList.add("hidden");
-    navMenu?.classList.remove("slide-in");
+    mobileNavDropdown?.classList.add("hidden");
+    mobileNavDropdown?.classList.remove("mobile-menu-open");
+    mobileNavOverlay?.classList.add("hidden");
+    mobileNavOverlay?.classList.remove("opacity-100");
+    document.body.classList.remove("overflow-hidden");
   });
 
   document.addEventListener("astro:after-swap", setupMobileMenu);
@@ -75,27 +143,38 @@ import { SITE } from "@/consts";
 <style>
   #nav-menu {
     @apply flex-col md:flex-row;
-    transition:
-      transform 0.3s ease-in-out,
-      opacity 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
-  @media (max-width: 768px) {
-    #nav-menu:not(.hidden) {
-      display: flex;
-      margin-top: 1rem;
-      animation: slideDown 0.3s ease-in-out;
-    }
+  #mobile-nav-dropdown {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
   }
 
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  #mobile-nav-dropdown.mobile-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #mobile-nav-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  #mobile-nav-overlay.opacity-100 {
+    opacity: 1;
+  }
+
+  :global(.nav-link) {
+    @apply font-bold border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-blue transition-colors duration-200;
+    transform: rotate(-0.5deg);
+    display: inline-block;
+  }
+
+  :global(.mobile-nav-link) {
+    @apply font-bold text-lg py-2 border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-blue transition-all duration-200;
+    display: block;
+    width: 100%;
   }
 </style>

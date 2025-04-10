@@ -10,20 +10,20 @@ const { entry } = Astro.props;
 
 <a
   href={`/${entry.collection}/${entry.slug}`}
-  class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+  class="neo-card relative group flex flex-nowrap py-4 px-5 pr-12 rotate-[0.4deg] hover:rotate-0 transition-transform"
 >
   <div class="flex flex-col flex-1 truncate">
-    <div class="font-semibold">
+    <div class="font-bold">
       {entry.data.title}
     </div>
-    <div class="text-sm italic text-wrap">
+    <div class="text-sm mt-2 text-wrap">
       {entry.data.description}
     </div>
   </div>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    class="absolute top-1/2 right-2 -translate-y-1/2 size-5 stroke-2 fill-none stroke-current"
+    class="absolute top-1/2 right-3 -translate-y-1/2 size-6 stroke-2 fill-none stroke-current"
   >
     <line
       x1="5"
