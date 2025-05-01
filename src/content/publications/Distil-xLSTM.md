@@ -1,7 +1,7 @@
 ---
 title: "Distil-xLSTM: Learning Attention Mechanisms through Recurrent Structures"
 where: "arXiv"
-state: "Pre-print"
+state: "Preprint"
 pubType: "arXiv"
 link: "https://arxiv.org/abs/2503.18565"
 pubDate: "Mar 24 2025"

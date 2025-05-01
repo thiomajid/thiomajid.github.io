@@ -35,7 +35,7 @@ const publications = defineCollection({
     title: z.string(),
     where: z.string(),
     state: z
-      .enum(["Pre-print", "Short paper", "Published"])
+      .enum(["Preprint", "Short paper", "Published"])
       .default("Published"),
     pubType: z
       .enum(["Journal", "Conference", "arXiv", "Workshop"])
