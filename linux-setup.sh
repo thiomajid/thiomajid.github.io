@@ -10,7 +10,6 @@ sudo apt install -y build-essential git curl wget
 echo "Installing essential software..."
 curl -fsS https://dl.brave.com/install.sh | sh
 curl -f https://zed.dev/install.sh | sh
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo snap install go --classic
 sudo snap install gopls --classic
 sudo snap install uv --classic
@@ -18,7 +17,6 @@ sudo snap install btop
 sudo snap install obsidian --classic
 sudo snap install telegram-desktop --classic
 sudo snap install android-studio --classic
-sudo snap install flutter --classic
 
 curl -fsSL https://bun.sh/install | bash
 
@@ -37,7 +35,6 @@ sudo apt install gnome-shell-extensions -y
 
 
 sudo apt install xournalpp -y
-sudo apt install flameshot -y
 sudo apt-get install ripgrep -y
 sudo apt install gpg -y
 sudo mkdir -p /etc/apt/keyrings
@@ -48,7 +45,7 @@ sudo apt install eza -y
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 
-echo "Finilazing setup"
+echo "Finalizing setup"
 sudo apt update && sudo apt upgrade -y
 sudo apt autoremove
 
