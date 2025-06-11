@@ -10,6 +10,8 @@ sudo apt install -y build-essential git curl wget
 echo "Installing essential software..."
 curl -fsS https://dl.brave.com/install.sh | sh
 curl -f https://zed.dev/install.sh | sh
+curl -fsSL https://bun.sh/install | bash
+
 sudo snap install go --classic
 sudo snap install gopls --classic
 sudo snap install uv --classic
