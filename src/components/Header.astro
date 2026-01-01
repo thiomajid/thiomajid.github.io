@@ -9,7 +9,7 @@ import { SITE } from "@/consts";
     <div class="flex flex-wrap gap-y-2 justify-between items-center py-4">
       <Link href="/" underline={false}>
         <div
-          class="font-bold text-lg py-1 px-3 bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white rotate-[-1deg] inline-block"
+          class="font-bold text-lg py-1 px-3 bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white rotate-[-1deg] inline-block"
         >
           {SITE.NAME}
         </div>
@@ -18,7 +18,7 @@ import { SITE } from "@/consts";
       <button
         id="mobile-menu-button"
         aria-label="Toggle menu"
-        class="md:hidden flex items-center justify-center bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white p-1.5 rounded shadow-neo dark:shadow-neo-light transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+        class="md:hidden flex items-center justify-center bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white p-2 shadow-neo dark:shadow-neo-light transition-all duration-200 hover:shadow-neo-hover hover:-translate-y-0.5 rotate-[0.5deg]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,10 +27,10 @@ import { SITE } from "@/consts";
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="w-5 h-5"
+          stroke-width="3"
+          stroke-linecap="square"
+          stroke-linejoin="miter"
+          class="w-6 h-6"
         >
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -39,6 +39,8 @@ import { SITE } from "@/consts";
       </button>
 
       <nav id="nav-menu" class="hidden md:flex md:gap-4 w-full md:w-auto">
+        <Link href="/" class_="nav-link">Home</Link>
+        <span class="hidden md:inline font-bold">/</span>
         <Link href="/blog" class_="nav-link">Blog</Link>
         <span class="hidden md:inline font-bold">/</span>
         <Link href="/projects" class_="nav-link">Projects</Link>
@@ -48,22 +50,66 @@ import { SITE } from "@/consts";
     </div>
   </Container>
 
-  <!-- Mobile menu overlay -->
+  <!-- Mobile menu full-screen overlay -->
   <div
     id="mobile-nav-overlay"
-    class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"
+    class="fixed inset-0 bg-neo-bglight dark:bg-neo-bgdark z-50 hidden"
   >
-  </div>
+    <div class="h-full flex flex-col">
+      <!-- Menu header -->
+      <div
+        class="flex justify-between items-center p-6 border-b-2 border-black dark:border-white"
+      >
+        <div class="font-bold text-2xl">Menu</div>
+        <button
+          id="mobile-menu-close"
+          aria-label="Close menu"
+          class="flex items-center justify-center bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white p-2 shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-0.5 rotate-[-2deg] transition-all"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="square"
+            class="w-6 h-6"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
 
-  <!-- Mobile menu dropdown -->
-  <div
-    id="mobile-nav-dropdown"
-    class="absolute top-full left-0 right-0 bg-white dark:bg-neo-bgdark border-b-2 border-black dark:border-white shadow-lg z-50 hidden"
-  >
-    <div class="py-4 px-6 flex flex-col space-y-4">
-      <Link href="/blog" class_="mobile-nav-link">Blog</Link>
-      <Link href="/projects" class_="mobile-nav-link">Projects</Link>
-      <Link href="/publications" class_="mobile-nav-link">Publications</Link>
+      <!-- Menu links -->
+      <nav class="flex-1 flex flex-col justify-center items-center gap-6 p-8">
+        <a
+          href="/"
+          class="mobile-nav-link bg-neo-blue dark:bg-neo-dark-blue border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[0.5deg]"
+        >
+          Home
+        </a>
+        <a
+          href="/blog"
+          class="mobile-nav-link bg-neo-yellow dark:bg-neo-dark-yellow border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[-1deg]"
+        >
+          Blog
+        </a>
+        <a
+          href="/projects"
+          class="mobile-nav-link bg-neo-green dark:bg-neo-dark-green border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[1deg]"
+        >
+          Projects
+        </a>
+        <a
+          href="/publications"
+          class="mobile-nav-link bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[-0.5deg]"
+        >
+          Publications
+        </a>
+      </nav>
     </div>
   </div>
 </header>
@@ -71,27 +117,22 @@ import { SITE } from "@/consts";
 <script>
   function setupMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileNavDropdown = document.getElementById("mobile-nav-dropdown");
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
     const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
-    const navMenu = document.getElementById("nav-menu");
     let isMenuOpen = false;
 
     function toggleMobileMenu() {
       isMenuOpen = !isMenuOpen;
 
       if (isMenuOpen) {
-        mobileNavDropdown?.classList.remove("hidden");
         mobileNavOverlay?.classList.remove("hidden");
         setTimeout(() => {
-          mobileNavDropdown?.classList.add("mobile-menu-open");
-          mobileNavOverlay?.classList.add("opacity-100");
+          mobileNavOverlay?.classList.add("mobile-menu-open");
         }, 10);
         document.body.classList.add("overflow-hidden");
       } else {
-        mobileNavDropdown?.classList.remove("mobile-menu-open");
-        mobileNavOverlay?.classList.remove("opacity-100");
+        mobileNavOverlay?.classList.remove("mobile-menu-open");
         setTimeout(() => {
-          mobileNavDropdown?.classList.add("hidden");
           mobileNavOverlay?.classList.add("hidden");
         }, 300);
         document.body.classList.remove("overflow-hidden");
@@ -99,7 +140,7 @@ import { SITE } from "@/consts";
     }
 
     mobileMenuButton?.addEventListener("click", toggleMobileMenu);
-    mobileNavOverlay?.addEventListener("click", toggleMobileMenu);
+    mobileMenuClose?.addEventListener("click", toggleMobileMenu);
 
     // Close menu when clicking on a mobile nav link
     document.querySelectorAll(".mobile-nav-link").forEach((link) => {
@@ -112,10 +153,8 @@ import { SITE } from "@/consts";
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
         isMenuOpen = false;
-        mobileNavDropdown?.classList.add("hidden");
-        mobileNavDropdown?.classList.remove("mobile-menu-open");
         mobileNavOverlay?.classList.add("hidden");
-        mobileNavOverlay?.classList.remove("opacity-100");
+        mobileNavOverlay?.classList.remove("mobile-menu-open");
         document.body.classList.remove("overflow-hidden");
       }
     });
@@ -126,14 +165,9 @@ import { SITE } from "@/consts";
 
   // Reattach listeners on view transition navigation
   document.addEventListener("astro:before-preparation", () => {
-    const mobileNavDropdown = document.getElementById("mobile-nav-dropdown");
     const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
-
-    // Reset to initial state before navigation
-    mobileNavDropdown?.classList.add("hidden");
-    mobileNavDropdown?.classList.remove("mobile-menu-open");
     mobileNavOverlay?.classList.add("hidden");
-    mobileNavOverlay?.classList.remove("opacity-100");
+    mobileNavOverlay?.classList.remove("mobile-menu-open");
     document.body.classList.remove("overflow-hidden");
   });
 
@@ -146,35 +180,26 @@ import { SITE } from "@/consts";
     transition: all 0.3s ease-in-out;
   }
 
-  #mobile-nav-dropdown {
-    transform: translateY(-10px);
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-  }
-
-  #mobile-nav-dropdown.mobile-menu-open {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
   #mobile-nav-overlay {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transform: scale(1.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  #mobile-nav-overlay.opacity-100 {
+  #mobile-nav-overlay.mobile-menu-open {
     opacity: 1;
+    transform: scale(1);
   }
 
   :global(.nav-link) {
-    @apply font-bold border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-blue transition-colors duration-200;
+    @apply font-bold border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-dark-blue transition-colors duration-200;
     transform: rotate(-0.5deg);
     display: inline-block;
   }
 
-  :global(.mobile-nav-link) {
-    @apply font-bold text-lg py-2 border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-blue transition-all duration-200;
-    display: block;
-    width: 100%;
+  .mobile-nav-link {
+    @apply text-black dark:text-white;
+    text-decoration: none;
+    display: inline-block;
   }
 </style>

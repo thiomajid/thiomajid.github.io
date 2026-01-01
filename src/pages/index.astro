@@ -3,7 +3,7 @@ import ArrowCard from "@/components/ArrowCard.astro";
 import Container from "@/components/Container.astro";
 import Link from "@/components/Link.astro";
 import PublicationArrowCard from "@/components/PublicationArrowCard.astro";
-import { HOME, SITE, SITE_TITLE, SOCIALS } from "@/consts";
+import { HOME, SITE, SOCIALS } from "@/consts";
 import PageLayout from "@/layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -31,42 +31,79 @@ const publications = (await getCollection("publications"))
     </h4>
     <div class="space-y-16">
       <section>
-        <article class="space-y-4 neo-card mt-6">
-          <p class="animate">
-            Welcome to {SITE_TITLE}. I'm Abdoul Majid, currently pursuing a
-            research Master's degree in Artificial Intelligence.
-          </p>
-          <p class="animate">
-            I mainly focus on the intersection of
-            <Link
-              href="https://en.wikipedia.org/wiki/Natural_language_processing"
-              external
-            >
-              Natural Language Processing</Link
-            >
-            and <Link
-              href="https://en.wikipedia.org/wiki/Reinforcement_learning"
-              external>Reinforcement Learning</Link
-            >
-            to ensure better decision making using AI systems. In my spare time,
-            I also work on
-            <span class="bg-neo-yellow dark:bg-neo-blue px-1">OSS</span> projects
-            like <Link href="/projects/hausalm">HausaLM</Link> or <Link
-              href="/projects/eflight">EfLight</Link
-            >.
-          </p>
+        <!-- Photo and bio card layout -->
+        <div class="flex flex-col md:flex-row gap-6 items-start mt-6">
+          <!-- Photo outside the card -->
+          <div class="flex-shrink-0 w-full md:w-64">
+            <img
+              src="/me.jpeg"
+              alt="Abdoul Majid O. Thiombiano"
+              class="w-full h-auto border-4 border-black dark:border-white shadow-neo dark:shadow-neo-light rotate-[-1deg] hover:rotate-0 transition-transform duration-300"
+            />
+          </div>
 
-          <p class="animate">
-            Non technical? No problem, if you are a music fan, let's play some
-            piano chords.
-          </p>
-        </article>
+          <!-- Bio card -->
+          <article class="flex-1 space-y-4 neo-card">
+            <p class="animate">
+              I'm Abdoul Majid O. Thiombiano, a PhD student at Concordia
+              University working on <span class="font-bold px-1"
+                >Agentic AI for Autonomous Network Systems</span
+              > under the supervision of <Link
+                href="https://scholar.google.com/citations?hl=fr&user=rRq6FiAAAAAJ"
+                external
+              >
+                Prof. Abdelhak Bentaleb</Link
+              >
+            </p>
+            <p class="animate">
+              I graduated with a Research Master's degree in Artificial
+              Intelligence from the Faculty of Sciences of Monastir, supervised
+              by <Link
+                href="https://scholar.google.com/citations?hl=fr&user=2oRyj9QAAAAJ"
+                external
+              >
+                Prof. Brahim Hnich</Link
+              >, where I focused on
+              <Link
+                href="https://en.wikipedia.org/wiki/Natural_language_processing"
+                external
+              >
+                Natural Language Processing</Link
+              >
+              and <span class="font-bold">Efficient Machine Learning</span>.
+              During this time, I developed novel architectures such as <Link
+                href="/publications/moxe">MoxE</Link
+              > and <Link href="/publications/distil-xlstm">Distil-xLSTM</Link>,
+              advancing efficient language modeling through innovative recurrent
+              structures.
+            </p>
+            <p class="animate">
+              Prior to my Master's, I earned a Bachelor's degree in Software
+              Engineering under the supervision of <Link
+                href="https://scholar.google.com/citations?user=8P1tpUsAAAAJ&hl=fr&oi=ao"
+                external
+              >
+                Prof. Mounir Zrigui</Link
+              >
+              at the Faculty of Sciences of Monastir. Beyond research, I contribute
+              to
+              <span class="font-bold">open-source</span> projects like <Link
+                href="/projects/hausalm">HausaLM</Link
+              > and <Link href="/projects/eflight">EfLight</Link>.
+            </p>
+
+            <p class="animate">
+              When I'm not doing research, you might find me playing piano
+              chords.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-pink dark:bg-neo-pink border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
           >
             Recent publications
           </h5>
@@ -86,7 +123,7 @@ const publications = (await getCollection("publications"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
           >
             Latest posts
           </h5>
@@ -106,7 +143,7 @@ const publications = (await getCollection("publications"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-green dark:bg-neo-green border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+            class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-green dark:bg-neo-dark-green border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
           >
             Recent projects
           </h5>
@@ -125,7 +162,7 @@ const publications = (await getCollection("publications"))
 
       <section class="animate space-y-4">
         <h5
-          class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-blue dark:bg-neo-yellow border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+          class="font-bold text-xl text-black dark:text-white py-1 px-3 bg-neo-blue dark:bg-neo-dark-yellow border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
         >
           Let's Connect
         </h5>
@@ -137,7 +174,7 @@ const publications = (await getCollection("publications"))
 
           <ul class="flex flex-wrap gap-3 mt-4">
             {
-              SOCIALS.map((SOCIAL, idx) => (
+              SOCIALS.map((SOCIAL) => (
                 <li class="neo-button py-1 px-3 text-nowrap inline-block">
                   <Link
                     href={SOCIAL.HREF}
@@ -145,7 +182,42 @@ const publications = (await getCollection("publications"))
                     underline={false}
                     aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
                   >
-                    {SOCIAL.NAME}
+                    <span class="flex items-center gap-2">
+                      {SOCIAL.NAME === "Twitter" && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                      )}
+                      {SOCIAL.NAME === "Github" && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                      )}
+                      {SOCIAL.NAME === "LinkedIn" && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                      )}
+                      {SOCIAL.NAME}
+                    </span>
                   </Link>
                 </li>
               ))

@@ -77,7 +77,7 @@ svg {
   }
 
   .neo-button {
-    @apply bg-neo-yellow dark:bg-neo-blue border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200;
+    @apply bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200;
   }
 
   .neo-button:hover {
@@ -91,7 +91,7 @@ svg {
   }
 
   article a:hover {
-    @apply text-black dark:text-white bg-neo-yellow dark:bg-neo-blue;
+    @apply text-black dark:text-white bg-neo-yellow dark:bg-neo-dark-blue;
     @apply decoration-transparent;
   }
 }
