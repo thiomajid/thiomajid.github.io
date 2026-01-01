@@ -66,4 +66,8 @@ export const SOCIALS: Socials = [
     NAME: "LinkedIn",
     HREF: "https://www.linkedin.com/in/thiomajid",
   },
+  {
+    NAME: "Google Scholar",
+    HREF: "https://scholar.google.com/citations?user=PmVvceUAAAAJ&hl=fr",
+  },
 ];
