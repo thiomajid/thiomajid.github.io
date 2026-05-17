@@ -17,17 +17,17 @@ export default {
         "neo-pink": "#FF6B6B", // Coral red - bold accent
         "neo-green": "#95C97E", // Fresh lime sage - complements olive
         "neo-bglight": "#FAFBFC", // Soft white
-        "neo-bgdark": "#1E1E2E", // Deep navy charcoal
-        // Dark mode variants - muted for comfort
-        "neo-dark-yellow": "#D4A056", // Warm amber
-        "neo-dark-blue": "#4A8A96", // Deep teal
-        "neo-dark-pink": "#D95555", // Muted coral
-        "neo-dark-green": "#7AAF66", // Forest lime
+        "neo-bgdark": "#0A0A0A", // Almost black for maximum contrast
+        // Dark mode variants - bold, saturated neon colors for neobrutalism
+        "neo-dark-yellow": "#FDE047", // Neon yellow
+        "neo-dark-blue": "#2DD4BF", // Bright teal
+        "neo-dark-pink": "#F472B6", // Bright hot pink
+        "neo-dark-green": "#4ADE80", // Bright mint green
       },
       boxShadow: {
         neo: "4px 4px 0px 0px rgba(0,0,0,0.9)",
         "neo-hover": "6px 6px 0px 0px rgba(0,0,0,0.9)",
-        "neo-light": "4px 4px 0px 0px rgba(255,255,255,0.25)", // Softer shadow for dark mode
+        "neo-light": "4px 4px 0px 0px rgba(255,255,255,1)", // Solid white shadow for neobrutalist dark mode
       },
       borderWidth: {
         3: "3px",

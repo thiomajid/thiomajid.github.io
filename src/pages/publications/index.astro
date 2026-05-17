@@ -15,11 +15,10 @@ const publications = (await getCollection("publications")).sort(
   <Container>
     <div class="space-y-10">
       <div
-        class="animate font-bold text-2xl text-black dark:text-white py-1 px-5 bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+        class="animate font-bold text-2xl text-black dark:text-black py-1 px-5 bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
       >
         Publications
-      </div>
-      <ul class="animate flex flex-col gap-4">
+      </div>      <ul class="animate flex flex-col gap-4">
         {
           publications.map((pub) => (
             <li>

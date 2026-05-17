@@ -37,14 +37,14 @@ body {
   @apply font-sans antialiased;
   @apply flex flex-col;
   @apply bg-neo-bglight dark:bg-neo-bgdark;
-  @apply text-black dark:text-white/85; /* Reduced opacity for dark mode text */
+  @apply text-black dark:text-[#FAFBFC]; /* High contrast for dark mode text */
   font-family: "JetBrains";
 }
 
 header {
   @apply fixed top-0 left-0 right-0 z-50 py-4;
   @apply bg-neo-bglight dark:bg-neo-bgdark;
-  @apply border-b-2 border-black dark:border-white/60; /* Reduced border opacity */
+  @apply border-b-2 border-black dark:border-white; /* Solid border */
 }
 
 main {
@@ -52,24 +52,24 @@ main {
 }
 
 footer {
-  @apply py-5 text-sm border-t-2 border-black dark:border-white/60; /* Reduced border opacity */
+  @apply py-5 text-sm border-t-2 border-black dark:border-white; /* Solid border */
 }
 
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-bold;
-  @apply prose-headings:text-black prose-headings:dark:text-white/90; /* Reduced opacity */
+  @apply prose-headings:text-black prose-headings:dark:text-white; /* Solid text */
   font-family: "JetBrains" !important;
 }
 
 /* Improve icon visibility in dark mode */
 svg {
-  @apply stroke-current fill-current dark:stroke-white/90 dark:fill-none;
+  @apply stroke-current fill-current dark:stroke-white dark:fill-none;
 }
 
 @layer utilities {
   .neo-card {
-    @apply bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light p-5 transition-all duration-200;
+    @apply bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light p-5 transition-all duration-200;
   }
 
   .neo-card:hover {
@@ -77,22 +77,36 @@ svg {
   }
 
   .neo-button {
-    @apply bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white/70 shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200;
+    @apply bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200 text-black dark:text-black;
   }
 
   .neo-button:hover {
     @apply shadow-neo-hover transform -translate-y-1;
   }
 
+  .neo-button svg {
+    @apply dark:stroke-current;
+  }
+
+  /* Specific fix for social icons that use fill */
+  .neo-button svg[fill="currentColor"] {
+    @apply dark:fill-current dark:stroke-none;
+  }
+
   article a {
     @apply font-sans text-current underline underline-offset-4;
-    @apply decoration-black dark:decoration-white/70 decoration-2;
+    @apply decoration-black dark:decoration-white decoration-2;
     @apply transition-colors duration-300 ease-in-out;
   }
 
   article a:hover {
-    @apply text-black dark:text-white bg-neo-yellow dark:bg-neo-dark-blue;
+    @apply text-black dark:text-black bg-neo-yellow dark:bg-neo-dark-blue;
     @apply decoration-transparent;
+  }
+
+  /* Ensure links inside neo-buttons (like social links) have dark underlines to match their black text */
+  .neo-button a {
+    @apply decoration-black dark:decoration-black;
   }
 }
 
