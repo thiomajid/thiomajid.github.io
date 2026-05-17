@@ -9,29 +9,36 @@ export default {
       fontFamily: {
         sans: ["JetBrains", ...defaultTheme.fontFamily.sans],
         serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        handwriting: ["Caveat", "cursive"],
       },
       colors: {
-        // Vibrant palette complementing olive blazer - energetic and eye-friendly
-        "neo-yellow": "#FFC857", // Bright golden yellow - energetic warmth
-        "neo-blue": "#3AAFB9", // Vibrant turquoise - fresh and modern
-        "neo-pink": "#FF6B6B", // Coral red - bold accent
-        "neo-green": "#95C97E", // Fresh lime sage - complements olive
-        "neo-bglight": "#FAFBFC", // Soft white
-        "neo-bgdark": "#0A0A0A", // Almost black for maximum contrast
-        // Dark mode variants - bold, saturated neon colors for neobrutalism
-        "neo-dark-yellow": "#FDE047", // Neon yellow
-        "neo-dark-blue": "#2DD4BF", // Bright teal
-        "neo-dark-pink": "#F472B6", // Bright hot pink
-        "neo-dark-green": "#4ADE80", // Bright mint green
+        // Junk Journal Vintage Palette
+        "journal-bglight": "#F2EBE1", // Kraft paper / old paper
+        "journal-bgdark": "#2A2724", // Dark leather / charcoal
+        "journal-ink": "#1A1A1A", // Faded black ink
+        "journal-paper": "#FAF6F0", // Lighter paper for cards
+        "journal-darkpaper": "#3D3935", // Darker paper for dark mode cards
+        
+        // Washi tape / Stamp accent colors
+        "journal-red": "#C25953", // Faded stamp red
+        "journal-blue": "#5B7B8E", // Vintage denim blue
+        "journal-green": "#7A8B6B", // Olive journal green
+        "journal-yellow": "#DCA772", // Aged mustard/ochre
+        
+        // Dark mode accents (slightly more saturated for contrast)
+        "journal-dark-red": "#D1716B",
+        "journal-dark-blue": "#729AB0",
+        "journal-dark-green": "#91A57F",
+        "journal-dark-yellow": "#E8B989",
       },
       boxShadow: {
-        neo: "4px 4px 0px 0px rgba(0,0,0,0.9)",
-        "neo-hover": "6px 6px 0px 0px rgba(0,0,0,0.9)",
-        "neo-light": "4px 4px 0px 0px rgba(255,255,255,1)", // Solid white shadow for neobrutalist dark mode
+        "polaroid": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "polaroid-dark": "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)",
+        "tape": "0 1px 2px rgba(0,0,0,0.1)",
       },
-      borderWidth: {
-        3: "3px",
-      },
+      backgroundImage: {
+        'paper-texture': "url('/paper-texture.png')", // We can use CSS patterns instead if no image is available
+      }
     },
   },
   plugins: [require("@tailwindcss/typography")],

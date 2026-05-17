@@ -38,12 +38,12 @@ const publications = (await getCollection("publications"))
             <img
               src="/me.jpeg"
               alt="Abdoul Majid O. Thiombiano"
-              class="w-full h-auto border-4 border-black dark:border-white shadow-neo dark:shadow-neo-light rotate-[-1deg] hover:rotate-0 transition-transform duration-300"
+              class="w-full h-auto p-3 pb-10 bg-journal-paper dark:bg-journal-darkpaper shadow-polaroid dark:shadow-polaroid-dark rotate-[-3deg] hover:rotate-0 transition-transform duration-300"
             />
           </div>
 
           <!-- Bio card -->
-          <article class="flex-1 space-y-4 neo-card">
+          <article class="flex-1 space-y-4 journal-card">
             <p class="animate">
               I'm Abdoul Majid O. Thiombiano, a PhD student at Concordia
               University working on <span class="font-bold px-1"
@@ -103,7 +103,7 @@ const publications = (await getCollection("publications"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-black py-1 px-3 bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+            class="washi-tape-label bg-journal-red/50 dark:bg-journal-dark-red/50 rotate-[0.5deg]"
           >
             Recent publications
           </h5>
@@ -123,7 +123,7 @@ const publications = (await getCollection("publications"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-black py-1 px-3 bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+            class="washi-tape-label bg-journal-yellow/50 dark:bg-journal-dark-yellow/50 rotate-[-1deg]"
           >
             Latest posts
           </h5>
@@ -143,7 +143,7 @@ const publications = (await getCollection("publications"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5
-            class="font-bold text-xl text-black dark:text-black py-1 px-3 bg-neo-green dark:bg-neo-dark-green border-2 border-black dark:border-white rotate-[0.5deg] inline-block"
+            class="washi-tape-label bg-journal-green/50 dark:bg-journal-dark-green/50 rotate-[0.5deg]"
           >
             Recent projects
           </h5>
@@ -162,10 +162,10 @@ const publications = (await getCollection("publications"))
 
       <section class="animate space-y-4">
         <h5
-          class="font-bold text-xl text-black dark:text-black py-1 px-3 bg-neo-blue dark:bg-neo-dark-yellow border-2 border-black dark:border-white rotate-[-0.5deg] inline-block"
+          class="washi-tape-label bg-journal-blue/50 dark:bg-journal-dark-blue/50 rotate-[-2deg]"
         >
           Let's Connect
-        </h5>        <article class="neo-card mt-4">
+        </h5>        <article class="journal-card mt-4">
           <p>
             If you want to get in touch with me about something or just to say
             hi, reach out on social media or send me an email.
@@ -174,7 +174,7 @@ const publications = (await getCollection("publications"))
           <ul class="flex flex-wrap gap-3 mt-4">
             {
               SOCIALS.map((SOCIAL) => (
-                <li class="neo-button py-1 px-3 text-nowrap inline-block">
+                <li class="journal-button py-1 px-3 text-nowrap inline-block">
                   <Link
                     href={SOCIAL.HREF}
                     external
@@ -233,6 +233,18 @@ const publications = (await getCollection("publications"))
               ))
             }
           </ul>
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
+/ul>
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
+/ul>
         </article>
       </section>
     </div>

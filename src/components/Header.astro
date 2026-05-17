@@ -9,7 +9,7 @@ import { SITE } from "@/consts";
     <div class="flex flex-wrap gap-y-2 justify-between items-center py-4">
       <Link href="/" underline={false}>
         <div
-          class="font-bold text-lg py-1 px-3 text-black dark:text-black bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white rotate-[-1deg] inline-block"
+          class="font-bold text-2xl py-1 px-3 text-journal-ink bg-journal-yellow washi-tape-label rotate-[-2deg] inline-block font-handwriting"
         >
           {SITE.NAME}
         </div>
@@ -18,7 +18,7 @@ import { SITE } from "@/consts";
       <button
         id="mobile-menu-button"
         aria-label="Toggle menu"
-        class="md:hidden flex items-center justify-center bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white p-2 shadow-neo dark:shadow-neo-light transition-all duration-200 hover:shadow-neo-hover hover:-translate-y-0.5 rotate-[0.5deg]"
+        class="md:hidden flex items-center justify-center journal-button p-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -76,18 +76,18 @@ import { SITE } from "@/consts";
   <!-- Mobile menu full-screen overlay -->
   <div
     id="mobile-nav-overlay"
-    class="fixed inset-0 bg-neo-bglight dark:bg-neo-bgdark z-50 hidden"
+    class="fixed inset-0 bg-journal-bglight/95 dark:bg-journal-bgdark/95 backdrop-blur z-50 hidden"
   >
     <div class="h-full flex flex-col">
       <!-- Menu header -->
       <div
-        class="flex justify-between items-center p-6 border-b-2 border-black dark:border-white"
+        class="flex justify-between items-center p-6 border-b border-dashed border-journal-ink/20 dark:border-journal-paper/20"
       >
         <div class="font-bold text-2xl">Menu</div>
         <button
           id="mobile-menu-close"
           aria-label="Close menu"
-          class="flex items-center justify-center bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white p-2 shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-0.5 rotate-[-2deg] transition-all"
+          class="flex items-center justify-center journal-button bg-journal-red dark:bg-journal-dark-red p-2 rotate-[-2deg] transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,32 +110,32 @@ import { SITE } from "@/consts";
       <nav class="flex-1 flex flex-col justify-center items-center gap-6 p-8">
         <a
           href="/"
-          class="mobile-nav-link bg-neo-blue dark:bg-neo-dark-blue border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[0.5deg]"
+          class="mobile-nav-link journal-button bg-journal-blue dark:bg-journal-dark-blue py-4 px-8 text-2xl rotate-[1deg]"
         >
           Home
         </a>
         <a
           href="/blog"
-          class="mobile-nav-link bg-neo-yellow dark:bg-neo-dark-yellow border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[-1deg]"
+          class="mobile-nav-link journal-button bg-journal-yellow dark:bg-journal-dark-yellow py-4 px-8 text-2xl rotate-[-2deg]"
         >
           Blog
         </a>
         <a
           href="/projects"
-          class="mobile-nav-link bg-neo-green dark:bg-neo-dark-green border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[1deg]"
+          class="mobile-nav-link journal-button bg-journal-green dark:bg-journal-dark-green py-4 px-8 text-2xl rotate-[2deg]"
         >
           Projects
         </a>
         <a
           href="/publications"
-          class="mobile-nav-link bg-neo-pink dark:bg-neo-dark-pink border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[-0.5deg]"
+          class="mobile-nav-link journal-button bg-journal-red dark:bg-journal-dark-red py-4 px-8 text-2xl rotate-[-1deg]"
         >
           Publications
         </a>
         <a
           href="https://scholar.google.com/citations?user=PmVvceUAAAAJ&hl=fr"
           target="_blank"
-          class="mobile-nav-link bg-neo-blue dark:bg-neo-dark-blue border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light hover:shadow-neo-hover hover:-translate-y-1 transition-all duration-200 py-4 px-8 text-2xl font-bold rotate-[0.75deg]"
+          class="mobile-nav-link journal-button bg-journal-blue dark:bg-journal-dark-blue py-4 px-8 text-2xl rotate-[0.75deg]"
         >
           <span class="inline-flex items-center gap-2">
             <svg
@@ -235,13 +235,13 @@ import { SITE } from "@/consts";
   }
 
   :global(.nav-link) {
-    @apply font-bold border-b-2 border-black dark:border-white hover:bg-neo-yellow dark:hover:bg-neo-dark-blue transition-colors duration-200;
+    @apply font-bold font-handwriting text-xl border-b border-dashed border-journal-ink/20 dark:border-journal-paper/20 hover:bg-journal-yellow/50 dark:hover:bg-journal-dark-yellow/50 hover:text-journal-ink transition-colors duration-200;
     transform: rotate(-0.5deg);
     display: inline-block;
   }
 
   .mobile-nav-link {
-    @apply text-black dark:text-white;
+    @apply text-journal-ink;
     text-decoration: none;
     display: inline-block;
   }

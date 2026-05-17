@@ -10,13 +10,23 @@
   font-display: swap;
 }
 
-* {
-  font-family: "JetBrains";
-  letter-spacing: -0.02em;
+/* Mixed typography for junk journal style */
+body {
+  @apply font-serif antialiased text-journal-ink dark:text-journal-paper;
+  /* Graph paper pattern for light mode */
+  background-color: #F2EBE1;
+  background-image: 
+    linear-gradient(rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-a {
-  font-family: "JetBrains" !important;
+body.dark, html.dark body {
+  /* Dark leather/chalkboard pattern for dark mode */
+  background-color: #2A2724;
+  background-image: 
+    linear-gradient(rgba(250, 246, 240, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 246, 240, 0.03) 1px, transparent 1px);
 }
 
 html {
@@ -30,21 +40,18 @@ html.dark {
 
 html,
 body {
-  @apply size-full;
-}
-
-body {
-  @apply font-sans antialiased;
-  @apply flex flex-col;
-  @apply bg-neo-bglight dark:bg-neo-bgdark;
-  @apply text-black dark:text-[#FAFBFC]; /* High contrast for dark mode text */
-  font-family: "JetBrains";
+  @apply size-full flex flex-col;
 }
 
 header {
   @apply fixed top-0 left-0 right-0 z-50 py-4;
-  @apply bg-neo-bglight dark:bg-neo-bgdark;
-  @apply border-b-2 border-black dark:border-white; /* Solid border */
+  /* Torn paper header edge */
+  @apply bg-journal-bglight/90 dark:bg-journal-bgdark/90 backdrop-blur-sm;
+  border-bottom: 2px dashed rgba(26, 26, 26, 0.2);
+}
+
+html.dark header {
+  border-bottom: 2px dashed rgba(250, 246, 240, 0.2);
 }
 
 main {
@@ -52,68 +59,146 @@ main {
 }
 
 footer {
-  @apply py-5 text-sm border-t-2 border-black dark:border-white; /* Solid border */
+  @apply py-5 text-sm;
+  border-top: 2px dashed rgba(26, 26, 26, 0.2);
+}
+
+html.dark footer {
+  border-top: 2px dashed rgba(250, 246, 240, 0.2);
 }
 
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-bold;
-  @apply prose-headings:text-black prose-headings:dark:text-white; /* Solid text */
-  font-family: "JetBrains" !important;
+  @apply prose-headings:font-handwriting prose-headings:font-normal prose-headings:tracking-wide;
+  @apply prose-headings:text-journal-ink prose-headings:dark:text-journal-paper;
+  @apply prose-p:font-serif prose-a:font-handwriting;
 }
 
 /* Improve icon visibility in dark mode */
 svg {
-  @apply stroke-current fill-current dark:stroke-white dark:fill-none;
+  @apply stroke-current fill-current dark:stroke-journal-paper dark:fill-none;
 }
 
 @layer utilities {
-  .neo-card {
-    @apply bg-white dark:bg-neo-bgdark border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light p-5 transition-all duration-200;
+  .journal-card {
+    /* Polaroid/Paper scrap look */
+    @apply relative bg-journal-paper dark:bg-journal-darkpaper p-6 transition-all duration-300;
+    /* Hand-torn paper shape */
+    clip-path: polygon(
+      0% 2%, 5% 0%, 10% 3%, 15% 1%, 20% 4%, 25% 0%, 30% 3%, 35% 1%, 40% 4%, 45% 2%, 50% 5%, 55% 1%, 60% 4%, 65% 0%, 70% 3%, 75% 1%, 80% 4%, 85% 0%, 90% 3%, 95% 1%, 100% 4%,
+      98% 10%, 100% 15%, 97% 20%, 99% 25%, 98% 30%, 100% 35%, 98% 40%, 100% 45%, 97% 50%, 99% 55%, 98% 60%, 100% 65%, 97% 70%, 99% 75%, 98% 80%, 100% 85%, 97% 90%, 99% 95%, 100% 100%,
+      95% 97%, 90% 100%, 85% 98%, 80% 96%, 75% 100%, 70% 97%, 65% 99%, 60% 96%, 55% 100%, 50% 97%, 45% 99%, 40% 96%, 35% 100%, 30% 97%, 25% 99%, 20% 96%, 15% 100%, 10% 97%, 5% 99%, 0% 96%,
+      3% 90%, 0% 85%, 2% 80%, 0% 75%, 3% 70%, 0% 65%, 2% 60%, 0% 55%, 3% 50%, 0% 45%, 2% 40%, 0% 35%, 3% 30%, 0% 25%, 2% 20%, 0% 15%, 3% 10%, 0% 5%
+    );
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.15));
   }
 
-  .neo-card:hover {
-    @apply shadow-neo-hover transform -translate-y-1;
+  html.dark .journal-card {
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.4));
   }
 
-  .neo-button {
-    @apply bg-neo-yellow dark:bg-neo-dark-blue border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light px-4 py-2 font-bold transition-all duration-200 text-black dark:text-black;
+  .journal-card::before {
+    /* Washi tape effect at the top */
+    content: "";
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-journal-red/40 dark:bg-journal-dark-red/50 rotate-[3deg];
+    clip-path: polygon(
+      0% 10%, 5% 0%, 95% 5%, 100% 15%, 98% 90%, 92% 100%, 8% 95%, 0% 85%
+    );
+    mix-blend-mode: multiply;
+    z-index: 10;
   }
 
-  .neo-button:hover {
-    @apply shadow-neo-hover transform -translate-y-1;
+  html.dark .journal-card::before {
+    mix-blend-mode: screen;
   }
 
-  .neo-button svg {
-    @apply dark:stroke-current;
+  .journal-card:hover {
+    @apply transform -translate-y-1 rotate-[1deg];
+    filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.2));
   }
 
-  /* Specific fix for social icons that use fill */
-  .neo-button svg[fill="currentColor"] {
-    @apply dark:fill-current dark:stroke-none;
+  html.dark .journal-card:hover {
+    filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.5));
+  }
+
+  .journal-button {
+    /* Torn piece of paper or taped tag */
+    @apply relative bg-journal-yellow/80 dark:bg-journal-dark-yellow/80 text-journal-ink px-4 py-2 font-handwriting text-xl transition-all duration-200;
+    clip-path: polygon(
+      0% 5%, 10% 0%, 20% 6%, 30% 1%, 40% 5%, 50% 0%, 60% 4%, 70% 1%, 80% 5%, 90% 0%, 100% 4%,
+      98% 50%, 100% 96%,
+      90% 100%, 80% 95%, 70% 99%, 60% 96%, 50% 100%, 40% 95%, 30% 99%, 20% 96%, 10% 100%, 0% 95%,
+      2% 50%
+    );
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+  }
+
+  html.dark .journal-button {
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4));
+  }
+
+  .journal-button:hover {
+    @apply transform -translate-y-1 rotate-[-2deg] bg-journal-yellow dark:bg-journal-dark-yellow;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+  }
+
+  html.dark .journal-button:hover {
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
+  }
+
+  .journal-button svg {
+    @apply stroke-journal-ink fill-none dark:stroke-journal-ink;
+  }
+
+  .journal-button svg[fill="currentColor"] {
+    @apply fill-journal-ink stroke-none dark:fill-journal-ink;
   }
 
   article a {
-    @apply font-sans text-current underline underline-offset-4;
-    @apply decoration-black dark:decoration-white decoration-2;
-    @apply transition-colors duration-300 ease-in-out;
+    @apply text-current underline underline-offset-4 decoration-journal-red/50 dark:decoration-journal-dark-red/50 decoration-2;
+    @apply transition-all duration-300 ease-in-out font-handwriting text-xl;
   }
 
   article a:hover {
-    @apply text-black dark:text-black bg-neo-yellow dark:bg-neo-dark-blue;
+    @apply text-journal-ink dark:text-journal-ink bg-journal-yellow/50 dark:bg-journal-dark-yellow/50;
     @apply decoration-transparent;
   }
 
-  /* Ensure links inside neo-buttons (like social links) have dark underlines to match their black text */
-  .neo-button a {
-    @apply decoration-black dark:decoration-black;
+  /* Tape labels for headings */
+  .washi-tape-label {
+    @apply font-handwriting text-2xl px-4 py-1 inline-block relative text-journal-ink;
+    mix-blend-mode: multiply;
+    /* Jagged torn tape ends but more subtle */
+    clip-path: polygon(
+      0% 2%, 100% 0%,
+      98% 20%, 100% 40%, 97% 60%, 100% 80%, 98% 100%,
+      1% 98%,
+      3% 80%, 0% 60%, 2% 40%, 0% 20%
+    );
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+  }
+  
+  html.dark .washi-tape-label {
+    mix-blend-mode: normal; /* Screen doesn't always look good on text backgrounds */
+    @apply text-journal-ink;
   }
 }
 
 .animate {
   @apply opacity-0 translate-y-3;
   @apply transition-all duration-700 ease-out;
-  font-family: "JetBrains";
+}
+
+.animate.show {
+  @apply opacity-100 translate-y-0;
+}
+
+html #back-to-top {
+  @apply opacity-0 pointer-events-none;
+}
+
+html.scrolled #back-to-top {
+  @apply opacity-100 pointer-events-auto;
 }
 
 .animate.show {

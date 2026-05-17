@@ -4,13 +4,15 @@ interface Props {
   colorClass?: string;
 }
 
-const { text, colorClass = "bg-neo-yellow dark:bg-neo-dark-blue" } =
+const { text, colorClass = "bg-journal-yellow/50 dark:bg-journal-dark-yellow/50" } =
   Astro.props;
 ---
 
 <span
   class:list={[
-    "text-sm font-bold py-1 px-3 border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light inline-block rotate-[0.5deg] hover:rotate-0 transition-transform",
+    "font-handwriting text-lg text-journal-ink py-1 px-3 border border-journal-ink/20 shadow-tape inline-block rotate-[0.5deg] hover:rotate-0 transition-transform",
     colorClass,
-  ]}>{text}</span
+  ]}
 >
+  {text}
+</span>
