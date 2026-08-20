@@ -13,19 +13,19 @@ export async function GET(context) {
     .filter((x) => !x.data.draft)
     .map((post) => ({
       ...post.data,
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
     }));
 
   const projectItems = projects
     .filter((x) => !x.data.draft)
     .map((project) => ({
       ...project.data,
-      link: `/projects/${project.slug}/`,
+      link: `/projects/${project.id}/`,
     }));
 
   const publicationItems = publications.map((publication) => ({
     ...publication.data,
-    link: `/publications/${publication.slug}/`,
+    link: `/publications/${publication.id}/`,
   }));
 
   return rss({

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <!-- Organic Earthy Contemporary Palette -->
+    <style>
+      .bg { fill: #0E1210; }
+      
+      /* Gradients */
+      .env-shape { fill: url(#env-grad); }
+      .agent-shape { fill: url(#agent-grad); }
+      .reward-sun { fill: url(#gold-grad); }
+      .linen-accents { fill: #EDEBE4; }
+      
+      .stroke-linen { stroke: #EDEBE4; fill: none; stroke-linecap: round; }
+      .stroke-sage { stroke: #6B8E7D; fill: none; }
+      .stroke-gold { stroke: #D89E39; fill: none; }
+      
+      .thin-line { stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .medium-line { stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .dash-line { stroke-width: 1.5; fill: none; stroke-dasharray: 6 6; }
+    </style>
+
+    <linearGradient id="env-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B8E7D" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#3D5247" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="agent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BD6448" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#7A3925" stop-opacity="0.4" />
+    </linearGradient>
+
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D89E39" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#9C6B1C" stop-opacity="0.25" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Warm Charcoal Forest Background -->
+  <rect class="bg" width="1200" height="630" />
+
+  <!-- Abstract Concentric Background Rings representing Policy Search Space -->
+  <g opacity="0.05">
+    <circle cx="500" cy="315" r="280" class="stroke-linen" fill="none" stroke-width="2" />
+    <circle cx="500" cy="315" r="210" class="stroke-linen" fill="none" stroke-width="1.5" />
+    <circle cx="500" cy="315" r="140" class="stroke-linen" fill="none" stroke-width="1" />
+    <!-- Angular Policy Rays -->
+    <line x1="500" y1="35" x2="500" y2="595" class="stroke-linen" stroke-width="1" />
+    <line x1="220" y1="315" x2="780" y2="315" class="stroke-linen" stroke-width="1" />
+  </g>
+
+  <!-- Large Soft Abstract Sun (The Target State / Cumulative Return) -->
+  <circle cx="850" cy="260" r="140" class="reward-sun" />
+  <circle cx="850" cy="260" r="140" class="stroke-linen" stroke-width="1.5" opacity="0.08" />
+
+  <!-- The Agent-Environment Loop (Recurrent Loop Representation) -->
+  <!-- A beautifully fluid, organic loop that feeds back into itself representing learning from feedback -->
+  <g opacity="0.3" transform="translate(480, 315) rotate(45)">
+    <path d="M 0,0 C 80,-80 180,-80 200,0 C 220,80 120,180 0,0" class="stroke-linen medium-line" />
+    <path d="M 10,-10 C 90,-90 190,-90 210,-10 C 230,70 130,170 10,-10" class="stroke-gold dash-line" />
+  </g>
+
+  <!-- Asymmetrical, Intersecting Abstract Shapes representing Agent & Environment -->
+  <!-- 1. The Environment (Large organic mossy shape on the left) -->
+  <path d="M 330,220 C 470,140 590,260 510,380 C 430,500 210,420 330,220 Z" class="env-shape" opacity="0.8" />
+
+  <!-- 2. The Agent (Focused Rust/Terracotta Triangle/Blade Shape on the right) -->
+  <g transform="translate(620, 240) rotate(-10)">
+    <path d="M 0,0 L 160,200 L -30,120 Z" class="agent-shape" />
+    <!-- Fine lines within Agent representing policy decisions -->
+    <line x1="0" y1="0" x2="-30" y2="120" class="stroke-linen" stroke-width="2" opacity="0.3" />
+    <line x1="0" y1="0" x2="65" y2="100" class="stroke-linen" stroke-width="1.5" opacity="0.2" />
+  </g>
+
+  <!-- State Transition Trajectory Curve with Reward Beads (State, Action, Reward sequence) -->
+  <!-- A winding dotted path with gold-colored reward beads indicating a successful learning trajectory -->
+  <g opacity="0.85">
+    <!-- Solid main sweeping trajectory -->
+    <path d="M 140,160 C 240,240 280,480 440,430 C 580,390 640,140 780,240 C 900,320 950,420 1080,390" class="stroke-linen" stroke-width="2" />
+    
+    <!-- Parallel dotted guide path representing expected value -->
+    <path d="M 160,180 C 260,260 300,500 460,450 C 600,410 660,160 800,260 C 920,340 970,440 1100,410" class="stroke-sage" stroke-width="1.5" stroke-dasharray="6 6" />
+
+    <!-- Trajectory marker beads (State nodes) and golden reward markers -->
+    <circle cx="140" cy="160" r="5" class="linen-accents" />
+    <circle cx="280" cy="330" r="6" fill="#EDEBE4" />
+    <circle cx="440" cy="430" r="7" fill="#D89E39" />
+    <circle cx="600" cy="330" r="5.5" fill="#EDEBE4" />
+    <circle cx="780" cy="240" r="8" fill="#BD6448" />
+    <circle cx="940" cy="310" r="6" fill="#EDEBE4" />
+    <circle cx="1080" cy="390" r="5" class="linen-accents" />
+  </g>
+
+  <!-- Muted Graphic Details (Tiny floating coordinates and focal nodes) -->
+  <g opacity="0.6">
+    <circle cx="400" cy="150" r="3" class="linen-accents" />
+    <circle cx="375" cy="155" r="1.5" class="linen-accents" />
+    
+    <circle cx="780" cy="480" r="3.5" class="linen-accents" />
+    <circle cx="810" cy="490" r="2" class="linen-accents" />
+
+    <!-- Fine intersecting crosses at focal nodes -->
+    <line x1="430" y1="430" x2="450" y2="430" class="stroke-linen" stroke-width="1" />
+    <line x1="440" y1="420" x2="440" y2="440" class="stroke-linen" stroke-width="1" />
+    
+    <line x1="770" y1="240" x2="790" y2="240" class="stroke-linen" stroke-width="1" />
+    <line x1="780" y1="230" x2="780" y2="250" class="stroke-linen" stroke-width="1" />
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <!-- Sophisticated Contemporary Palette -->
+    <style>
+      .bg { fill: #0B0E14; }
+      
+      /* Gradients */
+      .base-disk { fill: url(#base-disk-grad); }
+      .rose-shape { fill: url(#rose-grad); }
+      .amber-bar { fill: url(#amber-grad); }
+      .cream-accents { fill: #F8F9FA; }
+      
+      .stroke-line { stroke: #F8F9FA; fill: none; stroke-linecap: round; }
+      .stroke-amber { stroke: #F59E0B; fill: none; }
+      .stroke-teal { stroke: #59A59B; fill: none; }
+    </style>
+
+    <linearGradient id="base-disk-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.05" />
+    </linearGradient>
+
+    <linearGradient id="rose-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E29578" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#B58A8A" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0.4" />
+    </linearGradient>
+    
+    <linearGradient id="teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7BB3A9" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#2D6A4F" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Midnight/Slate Background -->
+  <rect class="bg" width="1200" height="630" />
+
+  <!-- Soft Layered Background Geometry for Depth -->
+  <g opacity="0.05">
+    <!-- Offset concentric arcs -->
+    <path d="M 100,500 A 400,400 0 0,1 900,100" class="stroke-line" stroke-width="2" />
+    <path d="M 200,550 A 400,400 0 0,1 1000,150" class="stroke-line" stroke-width="1.5" />
+    <path d="M 0,350 L 1200,350" class="stroke-line" stroke-width="1.5" />
+  </g>
+
+  <!-- Large Soft Abstract Space (The Base Parameter space W0) -->
+  <circle cx="500" cy="315" r="210" class="base-disk" />
+  <circle cx="500" cy="315" r="210" class="stroke-line" stroke-width="1.5" opacity="0.1" />
+
+  <!-- Shifting Linear Projection lines (Abstract Attentions) -->
+  <g opacity="0.15">
+    <line x1="300" y1="120" x2="700" y2="520" class="stroke-line" stroke-width="1" />
+    <line x1="280" y1="140" x2="680" y2="540" class="stroke-line" stroke-width="1" />
+    <line x1="260" y1="160" x2="660" y2="560" class="stroke-line" stroke-width="1" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- Elegant Intersecting Sage/Teal Blade Shape (Linear space shift) -->
+  <path d="M 320,400 C 420,200 620,180 720,280 C 620,480 420,450 320,400 Z" fill="url(#teal-grad)" opacity="0.4" />
+
+  <!-- Asymmetrical, Intersecting Adaptation Shapes (A & B) -->
+  <!-- 1. The Rose Semi-circle / Sector (Up-projection) -->
+  <g transform="translate(680, 260) rotate(-15)">
+    <path d="M -130,0 A 130,130 0 0,1 130,0 Z" class="rose-shape" />
+    <circle cx="0" cy="-40" r="4" class="cream-accents" opacity="0.8" />
+  </g>
+
+  <!-- 2. The Gold/Amber Angled Slate (Down-projection, rotated & intersecting) -->
+  <g transform="translate(520, 340) rotate(35)">
+    <rect x="-35" y="-180" width="70" height="320" rx="14" class="amber-bar" />
+    <!-- Graphic accent lines within the bar -->
+    <line x1="-35" y1="0" x2="35" y2="0" class="stroke-line" stroke-width="2" opacity="0.25" />
+    <line x1="-35" y1="-60" x2="35" y2="-60" class="stroke-line" stroke-width="2" opacity="0.25" />
+    <line x1="-35" y1="60" x2="35" y2="60" class="stroke-line" stroke-width="2" opacity="0.25" />
+  </g>
+
+  <!-- Elegant Free-Flowing Trajectory Curve (Adapting Input Path) -->
+  <!-- This represents the signal x gracefully finding a bypass path and changing direction -->
+  <g opacity="0.85">
+    <!-- Solid main sweeping curve -->
+    <path d="M 120,450 C 220,420 310,230 490,260 C 610,280 640,430 780,390 C 920,350 960,180 1080,150" class="stroke-line" stroke-width="2" />
+    
+    <!-- Parallel dotted guide path representing decomposition -->
+    <path d="M 140,470 C 240,440 330,250 510,280 C 630,300 660,450 800,410 C 940,370 980,200 1100,170" class="stroke-teal" stroke-width="1.5" stroke-dasharray="6 6" />
+
+    <!-- Trajectory marker beads (Data state transitions) -->
+    <circle cx="120" cy="450" r="5" class="cream-accents" />
+    <circle cx="490" cy="260" r="7" fill="#FBBF24" />
+    <circle cx="780" cy="390" r="6" fill="#E29578" />
+    <circle cx="1080" cy="150" r="5" class="cream-accents" />
+  </g>
+
+  <!-- Muted Graphic Details (Tiny floating coordinates and focal nodes) -->
+  <g opacity="0.6">
+    <circle cx="500" cy="120" r="3" class="cream-accents" />
+    <circle cx="475" cy="125" r="1.5" class="cream-accents" />
+    
+    <circle cx="680" cy="460" r="3.5" class="cream-accents" />
+    <circle cx="710" cy="470" r="2" class="cream-accents" />
+
+    <!-- Fine intersecting lines at the focal points -->
+    <line x1="480" y1="260" x2="500" y2="260" class="stroke-line" stroke-width="1" />
+    <line x1="490" y1="250" x2="490" y2="270" class="stroke-line" stroke-width="1" />
+    
+    <line x1="770" y1="390" x2="790" y2="390" class="stroke-line" stroke-width="1" />
+    <line x1="780" y1="380" x2="780" y2="400" class="stroke-line" stroke-width="1" />
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+---
+title: "Raven From First Principles"
+description: "Go over the derivation of RWKV4's and a JAX implementation to map math to code "
+pubDate: "May 26 2026"
+heroImage: "/blog/raven-from-first-principles/cover.svg"
+tags: ["RWKV", "Linear Attention", "RNN"]
+draft: true
+---
+
+import CaptionedImage from "@/components/CaptionedImage.astro";
+import Link from "@/components/Link.astro";
+
+## Introduction
+
+Nowadays, inference at scale is where the real money goes. Efficient models are needed to lower the cost
+while ensuring good performance; and even though Transformer-based models are the de facto architecture of modern
+AI models but in this blog post, rather than reaching for quantization or pruning, I'd like to go somewhere less traveled,
+a hidden gem: the <Link href="https://arxiv.org/abs/2305.13048" external>Receptance Weighted Key Value (RWKV)</Link>.
+
+Standard softmax-based attention is the winning approach in many domains. However, there is no such thing as a free
+lunch; it comes with the cost of a quadratic complexity in memory. Algorithms like _Flash-Attention_ relax the problem to make
+the computation more efficient. But with with the latest versions leveraging capabilities of high end GPUs, you may be stuck
+with an older version of Flash Attention if you do not have access to an H100 or B200. So on older hardware you're back to worse
+memory scaling.
+
+While softmax attention was gaining traction, another paradigm emerged: <Link href="https://arxiv.org/abs/2006.16236" external>**Linear Attention**</Link>.
+By removing the non-linearity of the softmax and rearranging the computation of attention, it turns out that one can express
+transformer-based model computation as an RNN, leading us to **linear RNNs**.
+
+Linear attention made attention more memory efficient, however it was not as competitive as softmax attention. RWKV is one of the earliest
+models that made linear attention competitive at scale with a practical training recipe. As a linear RNN, its principles are rooted in the
+linear attention paradigm and it elegantly blends the parallel nature of Transformer based models during training and the efficiency of RNNs at inference time.
+
+But before getting to it, let's see how softmax-based attention can be rewritten as an RNN by breaking the non-linearity.
+
+## From softmax attention to linear attention
+
+$$
+\begin{equation}
+Attn(Q,K, V) = softmax(QK^{T})V
+\end{equation}
+$$
+
+## RWKV as a Linear RNN
+
+### The AFN architecture
+
+### Deriving RWKV formula
+
+### Stabilizing computation with running max trick
+
+### The time first $u$ vector
+
+## Token-shifting
+
+## Channel mixing
+
+## Putting everything together

@@ -5,21 +5,21 @@ import { HOME } from "@/consts";
 import PageLayout from "@/layouts/PageLayout.astro";
 import PublicationDetails from "@/layouts/PublicationDetails.astro";
 import { readingTime } from "@/lib/utils";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const publications = await getCollection("publications");
   return publications
     .sort((a, b) => a.data.title.localeCompare(b.data.title))
     .map((publication) => ({
-      params: { slug: publication.slug },
+      params: { slug: publication.id },
       props: publication,
     }));
 }
 type Props = CollectionEntry<"publications">;
 
 const publication = Astro.props;
-const { Content } = await publication.render();
+const { Content } = await render(publication);
 
 function getPublicationPrefix(pubType: typeof publication.data.pubType) {
   let prefix = "";

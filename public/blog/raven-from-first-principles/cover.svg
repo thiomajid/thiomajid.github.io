@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <!-- Muted Modern Color Palette -->
+    <style>
+      .bg { fill: #16181F; }
+      .cream { fill: #F4F1DE; }
+      .terracotta { fill: #E07A5F; }
+      .sage { fill: #81B29A; }
+      .slate { fill: #3D405B; }
+      .sand { fill: #F2CC8F; }
+      
+      .stroke-cream { stroke: #F4F1DE; }
+      .stroke-terracotta { stroke: #E07A5F; }
+      .stroke-sage { stroke: #81B29A; }
+      .stroke-slate { stroke: #3D405B; }
+      
+      .thin-line { stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .medium-line { stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .dash-line { stroke-width: 1.5; fill: none; stroke-dasharray: 6 6; }
+    </style>
+  </defs>
+
+  <!-- Deep Warm Charcoal Background -->
+  <rect class="bg" width="1200" height="630" />
+
+  <!-- Abstract Concentric Background Rings representing Attention Fields / Receptive Waves -->
+  <g opacity="0.06">
+    <circle cx="850" cy="315" r="260" class="stroke-cream" fill="none" stroke-width="2" />
+    <circle cx="850" cy="315" r="200" class="stroke-cream" fill="none" stroke-width="1.5" />
+    <circle cx="850" cy="315" r="140" class="stroke-cream" fill="none" stroke-width="1" />
+  </g>
+
+  <!-- Large Soft Abstract Sun/Moon -->
+  <circle cx="820" cy="300" r="120" class="cream" opacity="0.08" />
+  <circle cx="780" cy="270" r="80" class="terracotta" opacity="0.15" />
+
+  <!-- Recurrent State Sequence Flow (RNN Loop Representation) -->
+  <!-- A beautifully clean, minimal sequence of state transformations feeding forward -->
+  <g transform="translate(100, 315)">
+    <!-- Main Recurrent Axis Line -->
+    <line x1="80" y1="0" x2="480" y2="0" class="stroke-cream thin-line" opacity="0.2" />
+
+    <!-- State 1 -->
+    <g transform="translate(100, 0)">
+      <circle cx="0" cy="0" r="8" class="sage" />
+      <path d="M -15,-15 A 20,20 0 1,1 15,-15" class="stroke-sage thin-line" opacity="0.7" />
+    </g>
+
+    <!-- Connection Flow 1 to 2 -->
+    <path d="M 120,-10 C 145,-30 175,-30 200,-10" class="stroke-cream thin-line" opacity="0.4" />
+    <path d="M 100,0 C 130,20 170,20 200,0" class="stroke-terracotta dash-line" opacity="0.5" />
+
+    <!-- State 2 -->
+    <g transform="translate(220, 0)">
+      <circle cx="0" cy="0" r="10" class="terracotta" />
+      <path d="M -18,-18 A 24,24 0 1,1 18,-18" class="stroke-terracotta thin-line" opacity="0.7" />
+    </g>
+
+    <!-- Connection Flow 2 to 3 -->
+    <path d="M 240,-10 C 265,-30 295,-30 320,-10" class="stroke-cream thin-line" opacity="0.4" />
+    <path d="M 220,0 C 250,20 290,20 320,0" class="stroke-sage dash-line" opacity="0.5" />
+
+    <!-- State 3 -->
+    <g transform="translate(340, 0)">
+      <circle cx="0" cy="0" r="12" class="sand" />
+      <path d="M -22,-22 A 28,28 0 1,1 22,-22" class="stroke-cream thin-line" opacity="0.7" />
+    </g>
+
+    <!-- Final Flow towards the Raven (State mapping) -->
+    <path d="M 360,-10 C 400,-40 450,-30 500,10" class="stroke-cream thin-line" opacity="0.5" />
+    <path d="M 340,0 C 390,30 460,10 520,-20" class="stroke-terracotta thin-line" opacity="0.4" />
+  </g>
+
+  <!-- Abstract Minimalist Geometric Raven in Soaring Flight -->
+  <g transform="translate(720, 160)">
+    <!-- Left Wing (Elegant Angled Sage Shape) -->
+    <path d="M 0,140 L -180,60 L -110,130 L -40,150 Z" class="sage" opacity="0.85" />
+    <path d="M -40,150 L -110,130 L -70,180 L -10,165 Z" class="slate" opacity="0.9" />
+
+    <!-- Right Wing (Warm Terracotta, Symmetrical Lift) -->
+    <path d="M 0,140 L 150,20 L 100,100 L 30,135 Z" class="terracotta" opacity="0.95" />
+    <path d="M 30,135 L 100,100 L 70,155 L 10,150 Z" class="sand" opacity="0.9" />
+
+    <!-- Tail Structure (Simple Clean Segments) -->
+    <polygon points="-10,165 0,140 10,150 0,260 -20,240" class="slate" opacity="0.8" />
+    <polygon points="0,260 20,240 10,150 0,140" class="terracotta" opacity="0.7" />
+
+    <!-- Sleek Minimal Body Core -->
+    <polygon points="0,140 -20,110 0,60 20,110" class="cream" opacity="0.9" />
+
+    <!-- Head & Sharp Minimal Beak -->
+    <circle cx="0" cy="50" r="18" class="cream" />
+    <polygon points="-4,36 12,20 8,50" class="sand" />
+    
+    <!-- Abstract Eye Detail -->
+    <circle cx="-3" cy="46" r="3.5" class="slate" />
+  </g>
+
+  <!-- Elegant Minimalist Horizontal Divider / Horizon Wave representing Linear Summation -->
+  <g transform="translate(100, 520)" opacity="0.25">
+    <path d="M 0,0 C 250,-20 350,20 600,0 C 850,-20 950,20 1000,0" class="stroke-cream thin-line" />
+    <path d="M 0,10 C 250,-10 350,30 600,10 C 850,-10 950,30 1000,10" class="stroke-sage thin-line" />
+  </g>
+</svg>
