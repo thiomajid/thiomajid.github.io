@@ -17,17 +17,22 @@ export default {
         "neo-pink": "#FF6B6B", // Coral red - bold accent
         "neo-green": "#95C97E", // Fresh lime sage - complements olive
         "neo-bglight": "#FAFBFC", // Soft white
-        "neo-bgdark": "#0A0A0A", // Almost black for maximum contrast
-        // Dark mode variants - bold, saturated neon colors for neobrutalism
-        "neo-dark-yellow": "#FDE047", // Neon yellow
-        "neo-dark-blue": "#2DD4BF", // Bright teal
-        "neo-dark-pink": "#F472B6", // Bright hot pink
-        "neo-dark-green": "#4ADE80", // Bright mint green
+        "neo-bgdark": "#1B1B20",
+        "neo-dark-surface": "#292930",
+        "neo-dark-text": "#F1EBDD",
+        "neo-dark-outline": "#D7CCB8",
+        // A warm, print-like palette that echoes the light theme without neon glare.
+        "neo-dark-yellow": "#F2BD58",
+        "neo-dark-blue": "#68B8C2",
+        "neo-dark-pink": "#E9857D",
+        "neo-dark-green": "#A4C47B",
       },
       boxShadow: {
         neo: "4px 4px 0px 0px rgba(0,0,0,0.9)",
         "neo-hover": "6px 6px 0px 0px rgba(0,0,0,0.9)",
-        "neo-light": "4px 4px 0px 0px rgba(255,255,255,1)", // Solid white shadow for neobrutalist dark mode
+        "neo-light": "4px 4px 0px 0px rgba(255,255,255,1)",
+        "neo-dark": "4px 4px 0px 0px #8A795F",
+        "neo-dark-hover": "6px 6px 0px 0px #A18B69",
       },
       borderWidth: {
         3: "3px",

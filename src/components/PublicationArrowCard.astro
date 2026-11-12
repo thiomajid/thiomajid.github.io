@@ -35,10 +35,10 @@ function getPublicationPrefix(pubType: typeof entry.data.pubType) {
       {entry.data.title}
     </div>
     <div
-      class="text-sm mt-2 text-wrap border-l-4 border-neo-pink dark:border-neo-blue pl-2"
+      class="text-sm mt-2 text-wrap border-l-4 border-neo-pink dark:border-neo-dark-blue pl-2"
     >
       <p>
-        {getPublicationPrefix(entry.data.pubType)}
+        {getPublicationPrefix(entry.data.pubType)}{" "}
         <span class="font-bold">{entry.data.where}</span>
       </p>
     </div>
