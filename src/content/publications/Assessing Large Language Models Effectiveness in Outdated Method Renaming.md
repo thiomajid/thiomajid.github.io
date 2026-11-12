@@ -1,6 +1,5 @@
 ---
-title: "Assessing Large Language Models Effectiveness in
-Outdated Method Renaming"
+title: "Assessing Large Language Models Effectiveness in Outdated Method Renaming"
 where: "ICSOC 2024"
 state: "Published"
 pubType: "Conference"

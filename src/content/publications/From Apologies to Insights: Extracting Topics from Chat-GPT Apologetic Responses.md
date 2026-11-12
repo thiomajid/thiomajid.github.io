@@ -1,6 +1,5 @@
 ---
-title: "From Apologies to Insights: Extracting Topics from ChatGPT
-Apologetic Responses"
+title: "From Apologies to Insights: Extracting Topics from ChatGPT Apologetic Responses"
 where: "Journal of Decision Systems"
 state: "Published"
 pubType: "Journal"
